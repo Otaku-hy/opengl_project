@@ -2,7 +2,7 @@
 
 namespace OpenGL_TEST
 {
-    Iterator1::Iterator1(GLFWwindow *window, int frame_pre_second) : RenderingIterator(window, frame_pre_second)
+    Iterator1::Iterator1(std::shared_ptr<Camera> camera, int frame_pre_second) : RenderingIterator(camera, frame_pre_second)
     {
     }
 
@@ -11,15 +11,23 @@ namespace OpenGL_TEST
         RenderingIterator::~RenderingIterator();
     }
 
-    void Iterator1::RenderingEvent(std::shared_ptr<Camera> camera, std::vector<std::shared_ptr<Shader>> shaders)
+    void Iterator1::RenderingEvent(std::vector<std::shared_ptr<Shader>> shaders)
     {
-        glm::mat4 view_mat = glm::lookAt(glm::vec3(0, 0, 6), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
-        glm::mat4 projection_mat = glm::perspective(glm::radians(38.8f), 1.0f, 0.1f, 7000.0f);
-
         shaders[0]->BindShader();
         shaders[0]->SetUniform("model_mat", shaders[0]->model_mat());
-        shaders[0]->SetUniform("view_mat", view_mat);
-        shaders[0]->SetUniform("projection_mat", projection_mat);
+        shaders[0]->SetUniform("view_mat", camera_->view_mat());
+        shaders[0]->SetUniform("projection_mat", camera_->projection_mat());
+
+        shaders[0]->SetUniform("camera_pos", camera_->camera_pos());
+        shaders[0]->SetUniform("light_pos", glm::vec3(0, 8, 10));
+        shaders[0]->SetUniform("light_color", glm::vec3(1, 1, 1));
+        shaders[0]->SetUniform("object_color", glm::vec3(1, 1, 1));
+
+        // uniform vec3 camera_pos;
+        // uniform vec3 light_pos;
+        // uniform vec3 object_color;
+        // uniform vec3 light_color;
+
         shaders[0]->DrawObjects();
     }
 } // namespace OpenGL_TEST

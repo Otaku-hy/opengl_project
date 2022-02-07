@@ -10,10 +10,10 @@ namespace OpenGL_TEST
     private:
         /* data */
     public:
-        Iterator1(GLFWwindow* window,int frame_pre_second);
+        Iterator1(std::shared_ptr<Camera> camera, int frame_pre_second);
         ~Iterator1() override;
 
-        void RenderingEvent(std::shared_ptr<Camera> camera, std::vector<std::shared_ptr<Shader>> shaders) override;
+        void RenderingEvent(std::vector<std::shared_ptr<Shader>> shaders) override;
     };
 
 } // namespace OpenGL_TEST

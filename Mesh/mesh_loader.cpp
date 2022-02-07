@@ -46,8 +46,8 @@ namespace OpenGL_TEST
                         auto segment2 = vertex_index.find_last_not_of("0123456789");
 
                         int pos_index = std::stoi(vertex_index.substr(0, segment1));
-                        int normal_index = std::stoi(vertex_index.substr(segment1 + 1, segment2 - segment1 - 1));
-                        int texture_coord_index = std::stoi(vertex_index.substr(segment2 + 1));
+                        int texture_coord_index = std::stoi(vertex_index.substr(segment1 + 1, segment2 - segment1 - 1));
+                        int normal_index = std::stoi(vertex_index.substr(segment2 + 1));
 
                         mesh->PushBackVertex(position[pos_index - 1], normal[normal_index - 1], texture_coordinate[texture_coord_index - 1]);
                     }

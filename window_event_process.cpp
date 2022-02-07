@@ -20,14 +20,6 @@ namespace OpenGL_TEST
         }
     }
 
-    void InputProcess(GLFWwindow *window)
-    {
-        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        {
-            glfwSetWindowShouldClose(window, true);
-        }
-    }
-
     void SetOpenGLParameter()
     {
         glEnable(GL_DEPTH_TEST);

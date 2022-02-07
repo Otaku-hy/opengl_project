@@ -14,7 +14,6 @@ void glfw_config();
 void glew_config();
 
 void SetOpenGLParameter();
-void InputProcess(GLFWwindow* window);
 
 } //namespace OpenGL_TEST
 

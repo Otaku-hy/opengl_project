@@ -64,12 +64,12 @@ namespace OpenGL_TEST
 
         glBindBuffer(GL_ARRAY_BUFFER, vbos_[1]);
         glBufferData(GL_ARRAY_BUFFER, mesh->normal_mesh_.size() * sizeof(glm::vec3), &mesh->normal_mesh_[0], GL_STATIC_DRAW);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)(mesh->position_mesh_.size()));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
         glEnableVertexAttribArray(1);
 
         glBindBuffer(GL_ARRAY_BUFFER, vbos_[2]);
         glBufferData(GL_ARRAY_BUFFER, mesh->texture_coord_mesh_.size() * sizeof(glm::vec2), &mesh->texture_coord_mesh_[0], GL_STATIC_DRAW);
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void *)(mesh->position_mesh_.size() + mesh->normal_mesh_.size()));
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void *)0);
         glEnableVertexAttribArray(2);
 
         glBindBuffer(GL_ARRAY_BUFFER, 0);
